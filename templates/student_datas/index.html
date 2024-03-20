@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'student_datas/base.html' %}
+    {% block content %}
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Student Database Management</title>
+</head>
+<body>
+    <!--Heading-->
+    <h1 class="text-center p-4 0 fw-bolder">Student Records</h1>
+    
+    <!--Display Student Records-->
+    <table class="table table-striped fw-semibold">
+        <thead class="table-dark">
+            <th>Student No</th>
+            <th>Student Name</th>
+            <th>Student Year</th>
+            <th>Student Dept</th>
+            <th>Update/Delete Student Records</th>
+        </thead>
+        <tr>
+        {% for st in student %}
+            <td>{{st.Student_No}}</td>
+            <td>{{st.Student_Name}}</td>
+            <td>{{st.Student_Year}}</td>
+            <td>{{st.Student_Dept}}</td>
+            <td><a href='/update/{{st.id}}'><button type='submit'class="btn btn-success fw-semibold">Update</button></a>  <a href='/delete/{{st.id}}'><button type='submit' class="btn btn-danger fw-semibold">Delete</button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href='/create'><button type='submit' class="btn btn-primary m-3 fw-semibold">Add Student</button></a>
+    {% endblock %}
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>
